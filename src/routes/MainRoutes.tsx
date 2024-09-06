@@ -1,5 +1,5 @@
 import App from "../pages/app";
-import Token from "../pages/auth/signin";
+import Token from "../pages/token"
 // import SignUP from "../pages/auth/signup";
 
 const MainRoutes = {

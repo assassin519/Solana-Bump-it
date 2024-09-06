@@ -66,20 +66,7 @@ const TopNavbar = () => {
         <div className="flex items-center gap-3  ">
           {isLoggedIn ?
             <div className="flex items-center gap-2">
-              <div className="lg:visible lg:flex sm:hidden items-center hidden  ">
-                <Button text="Election" className="px-2 py-1 flex flex-col cursor-pointer  rounded-md items-center text-gray-500 hover:text-selBtnHoverTextColor hover:bg-selBtnHoverColor active:bg-red-600" onClick={() => { navigate('/elections') }} />
-              </div>
-
-              <Button text="Deposit" className="p-2 w-full lg:flex hidden flex-col cursor-pointer  rounded-md items-center bg-btnColor hover:bg-btnColor text-white" onClick={() => { }} />
-
-              <div className="relative"
-                onMouseEnter={toggleMenu}
-                onMouseLeave={toggleMenu}>
-
-                <Button className="w-14 hidden lg:flex border-gray-300 p-2 rounded-full  items-center text-gray-400"  >
-                  <img classN-ame=" rounded-full" src="https://docs.material-tailwind.com/img/face-2.jpg" alt="" />
-                </Button>
-              </div >
+              aaaaaaaa
             </div >
             :
             <div className=" flex gap-1 items-center">

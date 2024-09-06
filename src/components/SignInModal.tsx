@@ -1,8 +1,8 @@
 import React from "react";
-import instance from "../utils/axios";
 import { ModalProps } from "../types";
 import Button from "@mui/material/Button";
 import useAuth from "../hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 import useNotification from "../hooks/useNotification";
 import TextField from '@mui/material/TextField';
 
@@ -11,6 +11,7 @@ import { Dialog, DialogContent, DialogTitle } from '@mui/material';
 const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
     const { showNotification } = useNotification()
     const { login, register, isLoggedIn } = useAuth()
+    const navigator = useNavigate();
 
     const [userData, setUserData] = React.useState({
         username: "",
@@ -20,7 +21,6 @@ const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
     const [passwordError, setPasswordError] = React.useState(false);
     const [usernameError, setUsernameError] = React.useState(false);
     const [emailError, setEmailError] = React.useState(false);
-
 
     const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const password = e.target.value;
@@ -64,14 +64,13 @@ const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
         if (title == "Sign In") {
             if (!isLoggedIn) {
                 login(userData.email, userData.password)
+                navigator('/token')
                 showNotification("Successfully logined!", "success")
             }
             alert(userData.username)
-            onClose()
         } else {
             register(userData.email, userData.password, userData.username)
             showNotification("Successfully registered!", "success")
-            onClose()
         }
     }
 

@@ -1,6 +1,6 @@
 import React from "react";
-import TopNavbar from "../../components/layouts/TopNavbar";
-import WalletCard from "../../components/walletCard";
+import TopNavbar from "../components/layouts/TopNavbar"
+import WalletCard from "../components/walletCard";
 
 import Button from "@mui/material/Button";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
@@ -8,10 +8,9 @@ import InfoIcon from '@mui/icons-material/Info';
 import PaymentIcon from '@mui/icons-material/Payment';
 
 import { useNavigate } from "react-router-dom";
-import { MessageCircle } from "lucide-react";
-import SideBar from "../../components/layouts/SideBar";
+import SideBar from "../components/layouts/SideBar";
 
-const Token: React.FC = () => {
+const Token = () => {
     const navigator = useNavigate();
 
     return (
