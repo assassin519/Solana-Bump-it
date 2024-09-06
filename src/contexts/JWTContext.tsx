@@ -83,6 +83,8 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
 
         init();
     }, []);
+
+    
     const login = async (email: string, password: string) => {
 
         const response = await instance.post('/auth/login', { email, password });
@@ -100,7 +102,6 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
 
     const register = async (email: string, password: string, username: string) => {
         const id = chance.bb_pin();
-
         const response = await instance.post('/auth/register', {
             id,
             email,

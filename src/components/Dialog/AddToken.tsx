@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { IconButton, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { IconButton, Dialog,  DialogContent,  DialogTitle } from '@mui/material';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import InfoIcon from '@mui/icons-material/Info';
 import Slide from '@mui/material/Slide';
@@ -18,7 +18,7 @@ const Transition = React.forwardRef(function Transition(
 
 export default function AddToken() {
     const [open, setOpen] = React.useState < boolean > (false);
-    const [selected, setSelected] = React.useState < string > ();
+    // const [selected, setSelected] = React.useState < string > ();
 
     const handleClickOpen = () => {
         setOpen(true);

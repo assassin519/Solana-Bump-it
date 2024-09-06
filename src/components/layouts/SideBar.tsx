@@ -5,7 +5,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import Credit from "../Dialog/Credit";
 
 import Rewards from "../Dialog/Rewards";
-import AddToken from "../Dialog/AddToken copy";
+import AddToken from "../Dialog/AddToken";
 
 const SideBar = () => {
     return (

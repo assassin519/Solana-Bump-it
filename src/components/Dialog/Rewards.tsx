@@ -1,12 +1,10 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { IconButton, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { IconButton, Dialog, DialogContent, DialogTitle } from '@mui/material';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import InfoIcon from '@mui/icons-material/Info';
 import Slide from '@mui/material/Slide';
 import { TransitionProps } from '@mui/material/transitions';
-import AddIcon from '@mui/icons-material/Add';
 
 const Transition = React.forwardRef(function Transition(
     props: TransitionProps & {
@@ -19,7 +17,7 @@ const Transition = React.forwardRef(function Transition(
 
 export default function Rewards() {
     const [open, setOpen] = React.useState < boolean > (false);
-    const [selected, setSelected] = React.useState < string > ();
+    // const [selected, setSelected] = React.useState < string > ();
 
     const handleClickOpen = () => {
         setOpen(true);
@@ -68,7 +66,7 @@ export default function Rewards() {
 
                 <DialogContent>
                     <div className='max-w-full flex flex-col gap-4'>
-                    dd
+                        dd
                     </div>
 
                     <div className='text-right pt-4'>

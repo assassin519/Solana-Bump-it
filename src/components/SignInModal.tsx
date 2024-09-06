@@ -26,7 +26,6 @@ const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
         const password = e.target.value;
         setUserData({ ...userData, password });
 
-        // Validate password
         if (password.length < 8) {
             setPasswordError(true);
         } else {
@@ -38,8 +37,7 @@ const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
         const email = e.target.value;
         setUserData({ ...userData, email });
 
-        // Validate email format using a simple regex
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
         if (!emailRegex.test(email)) {
             setEmailError(true);
         } else {
@@ -50,7 +48,6 @@ const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
         const username = e.target.value;
         setUserData({ ...userData, username });
 
-        // Validate username
         if (username.trim() === '') {
             setUsernameError(true);
         } else {
@@ -67,7 +64,6 @@ const SignInModal = ({ isOpen, onClose, title }: ModalProps) => {
                 navigator('/token')
                 showNotification("Successfully logined!", "success")
             }
-            alert(userData.username)
         } else {
             register(userData.email, userData.password, userData.username)
             showNotification("Successfully registered!", "success")

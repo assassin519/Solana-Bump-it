@@ -7,10 +7,10 @@ import TopNavbar from "../components/layouts/TopNavbar";
 import Dexlog from "../assets/dex.png"
 import Card from "../components/card";
 
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 const App = () => {
-    const navigator = useNavigate();
+    // const navigator = useNavigate();
     const [upOpen, setUpOpen] = React.useState(false);
     const handleUpClick = () => {
         setUpOpen(!upOpen);

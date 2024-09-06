@@ -1,4 +1,3 @@
-import React from "react";
 import TopNavbar from "../components/layouts/TopNavbar"
 import WalletCard from "../components/walletCard";
 
@@ -7,11 +6,12 @@ import AddCircleIcon from '@mui/icons-material/AddCircle';
 import InfoIcon from '@mui/icons-material/Info';
 import PaymentIcon from '@mui/icons-material/Payment';
 
-import { useNavigate } from "react-router-dom";
+import Stack from '@mui/material/Stack';
+// import { useNavigate } from "react-router-dom";
 import SideBar from "../components/layouts/SideBar";
 
 const Token = () => {
-    const navigator = useNavigate();
+    // const navigator = useNavigate();
 
     return (
         <div className="h-screen overflow-hidden-scrollbar overflow-y-auto bg-bgColor">
@@ -41,26 +41,29 @@ const Token = () => {
                                 <InfoIcon fontSize="small" />
                             </div>
 
-                            <div className="flex justify-between  py-4 gap-2">
-                                <div className="justify-center flex flex-col items-center">
-                                    <div className="border bg-green-500 w-12 h-12 items-center rounded-full p-2">
-                                        <PaymentIcon />
+
+                            <Stack direction="row" spacing={2}>
+                                <div className="flex justify-between  py-4 gap-2">
+                                    <div className="justify-center flex flex-col items-center">
+                                        <div className="border bg-green-500 w-12 h-12 items-center rounded-full p-2">
+                                            <PaymentIcon />
+                                        </div>
+                                        Withdraw
                                     </div>
-                                    Withdraw
-                                </div>
-                                <div className="justify-center flex flex-col items-center">
-                                    <div className="border bg-green-500 w-12 h-12 items-center rounded-full p-2">
-                                        <PaymentIcon />
+                                    <div className="justify-center flex flex-col items-center">
+                                        <div className="border bg-green-500 w-12 h-12 items-center rounded-full p-2">
+                                            <PaymentIcon />
+                                        </div>
+                                        Distribute
                                     </div>
-                                    Distribute
-                                </div>
-                                <div className="justify-center flex flex-col items-center">
-                                    <div className="border bg-green-500 w-12 h-12 items-center rounded-full p-2">
-                                        <PaymentIcon />
+                                    <div className="justify-center flex flex-col items-center">
+                                        <div className="border bg-green-500 w-12 h-12 items-center rounded-full p-2">
+                                            <PaymentIcon />
+                                        </div>
+                                        Consolidate
                                     </div>
-                                    Consolidate
                                 </div>
-                            </div>
+                            </Stack>
                         </div>
                     </div>
                     {/* <div className="grid"> */}

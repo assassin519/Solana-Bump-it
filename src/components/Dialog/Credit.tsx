@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { IconButton, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import { IconButton, Dialog, DialogContent, DialogTitle } from '@mui/material';
 import { MessageCircle } from "lucide-react";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import Slide from '@mui/material/Slide';
