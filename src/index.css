@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input:focus {
+  outline: none;
+}
+@layer base {
+  body {
+    @apply select-none;
+  }
+}
+@layer utilities {
+  .overflow-hidden-scrollbar::-webkit-scrollbar {
+    display: none;
+    /* Hide scrollbar for Chrome, Safari, and Opera */
+  }
+
+  .overflow-hidden-scrollbar {
+    -ms-overflow-style: none;
+    /* Hide scrollbar for IE and Edge */
+    scrollbar-width: none;
+    /* Hide scrollbar for Firefox */
+  }
+}
+
+:root {
+  --darkMode: #e0e0e0;
+  --textColor: rgb(2, 6, 23);
+  --textWhiteColor: rgb(2, 6, 23);
+  --textRvWhiteColor: #ffffff;
+  --textGrayColor: rgb(2, 6, 23);
+  --bgColor: rgb(255 255 255);
+  --cardBg: #ffffff;
+  --cardHoverBg: #ffffff;
+  --selectBtnBg: #e5e7eb;
+  --selectBlackBtnBg: #000000;
+
+  --yesBg: #e9f7ef;
+  --yesHoverBg: #22c55e;
+  --yesBtnText: #27ae60;
+
+  --noBg: #fdeeee;
+  --noHoverBg: #f97316;
+  --noBtnText: #e95c1c;
+  --btnColor: #2563eb;
+
+  --btnHoverColor: #2563eb;
+  --selBtnHoverColor: #f9fafb;
+  --selBtnHoverTextColor: #000000;
+
+  --searchHover: #f3f4f6;
+
+  --footerBg: #701a75;
+}
+
+.theme-dark {
+  --darkMode: #2d9cdb;
+  --textColor: rgb(206, 207, 212);
+  --textWhiteColor: #ffffff;
+  --textRvWhiteColor: rgb(2, 6, 23);
+  --bgColor: #1d2b39;
+  --cardBg: #2c3f4f;
+  --cardHoverBg: #425464;
+
+  --selectBtnBg: #2c3f4f;
+  --selectBlackBtnBg: #ffffff;
+
+  --yesBg: #335554;
+  --yesHoverBg: #22c55e;
+  --yesBtnText: #22c55e;
+
+  --noBg: #524350;
+  --noHoverBg: #f97316;
+  --noBtnText: #c2410c;
+  --btnColor: #2d9cdb;
+  --btnHoverColor: #2d9cdb;
+  --selBtnHoverColor: #2a3b49;
+  --selBtnHoverTextColor: #FFFFFF;
+
+  --searchHover: #4b5563;
+
+  --footerBg: #1d2b39;
+}
