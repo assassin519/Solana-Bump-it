@@ -79,7 +79,7 @@ export default function Rewards() {
                             role={undefined}
                             variant="contained"
                         >
-                            <p className='  text-lg'>Add</p>
+                            <p className='text-lg'>Add</p>
                         </Button>
                     </div>
                 </DialogContent>

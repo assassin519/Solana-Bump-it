@@ -17,7 +17,6 @@ export interface ModalProps {
     title: string;
     isOpen: boolean;
     onClose: () => void;
-    connect?: () => void;
 }
 
 export interface TopEventCardProps {

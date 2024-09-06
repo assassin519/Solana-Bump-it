@@ -3,7 +3,7 @@ import Footer from "../../components/layouts/Footer";
 import TopNavbar from "../../components/layouts/TopNavbar";
 import { useNavigate } from "react-router-dom";
 
-const SignIn = () => {
+const SignUp = () => {
     const navigator = useNavigate();
     const newLocal = "flex w-full px-8 py-4 flex-col ";
 
@@ -91,4 +91,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;
+export default SignUp;

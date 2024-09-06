@@ -1,5 +1,6 @@
 import App from "../pages/app";
 import Token from "../pages/auth/signin";
+// import SignUP from "../pages/auth/signup";
 
 const MainRoutes = {
     path: "/",
@@ -9,9 +10,13 @@ const MainRoutes = {
             element: <App />
         },
         {
-            path: "/signin",
+            path: "/token",
             element: <Token />
         },
+        // {
+        //     path: "/signup",
+        //     element: <SignUP />
+        // },
     ],
 }
 

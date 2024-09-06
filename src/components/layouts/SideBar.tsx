@@ -1,7 +1,5 @@
 import Button from "@mui/material/Button";
-import AddIcon from '@mui/icons-material/Add';
 import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import TelegramIcon from '@mui/icons-material/Telegram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import Credit from "../Dialog/Credit";
