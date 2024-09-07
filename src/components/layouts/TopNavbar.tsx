@@ -35,7 +35,7 @@ const TopNavbar = () => {
     setUpOpen(!upOpen);
   };
   const handleLogout = () => {
-    showNotification("Successfully registered!", "success");
+    showNotification("Successfully Logout!", "success");
     navigate('/');
     logout()
   }

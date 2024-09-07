@@ -3,16 +3,20 @@ import { ModalProps } from "../types";
 import useAuth from "../hooks/useAuth";
 import useNotification from "../hooks/useNotification";
 import { useNavigate } from "react-router-dom";
+import Slide from '@mui/material/Slide';
+import {  Fade } from '@mui/material';
 const SignInModal: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
     const { showNotification } = useNotification();
-    const { login, register } = useAuth();
+    const { login, register, isLoggedIn } = useAuth();
     const navigate = useNavigate()
     const [userData, setUserData] = React.useState({
         username: "",
         email: "",
         password: ""
     });
-
+    // React.useEffect(() => {
+    //     handleClick()
+    // })
     const [passwordError, setPasswordError] = React.useState < string | null > (null);
     const [usernameError, setUsernameError] = React.useState < string | null > (null);
     const [emailError, setEmailError] = React.useState < string | null > (null);
@@ -62,21 +66,25 @@ const SignInModal: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
         if (title === "Sign In") {
             console.log(userData.username)
             login(userData.username, userData.password);
-            showNotification("Successfully logged in!", "success");
+            showNotification("Log In", "success");
+            // if (isLoggedIn) {
             navigate("/token")
+            // }
             onClose();
         } else {
             register(userData.email, userData.password, userData.username);
-            showNotification("Successfully registered!", "success");
+            showNotification("Sign Up!", "success");
             onClose();
         }
     };
+
 
     const isFormValid = !emailError && !passwordError && !usernameError && userData.username.trim() !== '' && userData.password.length >= 8;
 
     return (
         <div
             onClick={onClose}
+            TransitionComponent={Transition}
             style={{
                 position: "fixed",
                 top: 0,
@@ -156,7 +164,7 @@ const SignInModal: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
                             {passwordError && <p className="text-red-500 text-sm">{passwordError}</p>}
                         </div>
                         <button
-                            className="w-full py-2 px-4 bg-purple-500 hover:bg-purple-700 rounded-md shadow-lg text-white font-semibold transition duration-200"
+                            className="w-full py-2 px-4 cursor-pointer bg-purple-500 hover:bg-purple-700 rounded-md shadow-lg text-white font-semibold transition duration-200"
                             type="button"
                             onClick={() => handleClick()}
                             disabled={!isFormValid} // Disable button if form is invalid
@@ -199,7 +207,7 @@ const SignInModal: React.FC<ModalProps> = ({ isOpen, onClose, title }) => {
                             {passwordError && <p className="text-red-500 text-sm">{passwordError}</p>}
                         </div>
                         <button
-                            className="w-full py-2 px-4 bg-purple-500 hover:bg-purple-700 rounded-md shadow-lg text-white font-semibold transition duration-200"
+                            className="w-full py-2 px-4 cursor-pointer bg-purple-500 hover:bg-purple-700 rounded-md shadow-lg text-white font-semibold transition duration-200"
                             type="button"
                             onClick={() => handleClick()}
                         // disabled={!isFormValid} // Disable button if form is invalid

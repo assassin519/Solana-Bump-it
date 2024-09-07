@@ -27,10 +27,17 @@ export default function Credit() {
     const handleClose = () => {
         setOpen(false);
     };
-
+    
+    const customModalStyles: React.CSSProperties = {
+        position: 'fixed', // or 'fixed' depending on your needs
+        top: '35%', // Adjust as needed
+        left: '50%', // Adjust as needed
+        transform: 'translate(-50%, -50%)', // Center the modal
+        width: 'auto', // Adjust width as needed
+        maxWidth: '600px', // Set a max width
+    };
     return (
         <div>
-
             <Button
                 style={{ textTransform: 'none' }} className="w-full gap-12 text-nowrap " variant="contained"
                 onClick={handleClickOpen}>
@@ -47,11 +54,12 @@ export default function Credit() {
                 TransitionComponent={Transition}
                 keepMounted
                 onClose={handleClose}
-            // PaperProps={{
-            //     style: {
-            //         backgroundColor: backgroundColor, // Your desired background color
-            //     },
-            // }}
+                PaperProps={{
+                    style: {
+                        ...customModalStyles,
+                        // backgroundColor: backgroundColor, // Your desired background color
+                    },
+                }}
             >
                 <DialogTitle className='flex justify-between items-center gap-3'>
                     <p>Buy Comment Credits</p>

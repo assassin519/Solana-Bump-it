@@ -16,6 +16,8 @@ const AuthGuard: React.FC<AuthGuardProps> = ({ children }) => {
     useEffect(() => {
         if (!isLoggedIn) {
             navigate("/", { replace: true });
+        } else {
+            navigate("/token");
         }
     }, [isLoggedIn, navigate, location]);
 

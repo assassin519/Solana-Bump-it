@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import { IconButton, Dialog,  DialogContent,  DialogTitle } from '@mui/material';
+import { IconButton, Dialog, DialogContent, DialogTitle } from '@mui/material';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import InfoIcon from '@mui/icons-material/Info';
 import Slide from '@mui/material/Slide';
@@ -27,6 +27,14 @@ export default function AddToken() {
     const handleClose = () => {
         setOpen(false);
     };
+    const customModalStyles: React.CSSProperties = {
+        position: 'fixed', // or 'fixed' depending on your needs
+        top: '30%', // Adjust as needed
+        left: '50%', // Adjust as needed
+        transform: 'translate(-50%, -50%)', // Center the modal
+        width: 'auto', // Adjust width as needed
+        maxWidth: '600px', // Set a max width
+    };
 
     return (
         <div>
@@ -47,13 +55,13 @@ export default function AddToken() {
                 TransitionComponent={Transition}
                 keepMounted
                 onClose={handleClose}
-                maxWidth="md"
+               
                 fullWidth={true}
-            // PaperProps={{
-            //     style: {
-            //         backgroundColor: backgroundColor, // Your desired background color
-            //     },
-            // }}
+                PaperProps={{
+                    style: {
+                        ...customModalStyles
+                    },
+                }}
             >
                 <DialogTitle className='flex justify-between items-center gap-3'>
                     <p>Buy Comment Credits</p>

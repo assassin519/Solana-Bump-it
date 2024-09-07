@@ -26,7 +26,19 @@ export default function Rewards() {
     const handleClose = () => {
         setOpen(false);
     };
-
+    const customModalStyles: React.CSSProperties = {
+        position: 'fixed', // or 'fixed' depending on your needs
+        top: '240px', // Adjust as needed
+        left: '50%', // Adjust as needed
+        transform: 'translate(-50%, -50%)', // Center the modal
+       
+        width: "100%",
+       
+        background: "rgba(0, 0, 0, 0.5)",
+        display: "flex",
+        // alignItems: "center",
+        justifyContent: "center",
+    };
     return (
         <div>
             <Button
@@ -47,12 +59,11 @@ export default function Rewards() {
                 keepMounted
                 onClose={handleClose}
                 maxWidth="md"
-                fullWidth={true}
-            // PaperProps={{
-            //     style: {
-            //         backgroundColor: backgroundColor, // Your desired background color
-            //     },
-            // }}
+                fullWidth={true} PaperProps={{
+                    style: {
+                        ...customModalStyles
+                    },
+                }}
             >
                 <DialogTitle className='flex justify-between items-center gap-3'>
                     <div className='flex items-center gap-3'>

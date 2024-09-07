@@ -1,16 +1,27 @@
 import TopNavbar from "../components/layouts/TopNavbar"
 import WalletCard from "../components/walletCard";
 
-import Button from "@mui/material/Button";
+import { Button, IconButton, Dialog, DialogContent, DialogTitle } from "@mui/material";
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import InfoIcon from '@mui/icons-material/Info';
 import PaymentIcon from '@mui/icons-material/Payment';
 
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import Slide from '@mui/material/Slide';
+import { TransitionProps } from '@mui/material/transitions';
 import Stack from '@mui/material/Stack';
 // import { useNavigate } from "react-router-dom";
 import SideBar from "../components/layouts/SideBar";
 import React from "react";
 
+const Transition = React.forwardRef(function Transition(
+    props: TransitionProps & {
+        children: React.ReactElement<any, any>;
+    },
+    ref: React.Ref<unknown>,
+) {
+    return <Slide direction="left" ref={ref} {...props} />;
+});
 const Token = () => {
     // const navigator = useNavigate();
     const [wallet, setWallet] = React.useState < JSX.Element[] > ([]);
@@ -20,6 +31,39 @@ const Token = () => {
         } else {
             alert("You can only add up to 4 inputs."); // Optional: Alert the user
         }
+    };
+    const [open, setOpen] = React.useState < boolean > (false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    // <div
+    //     onClick={onClose}
+    //     style={{
+    //         position: "fixed",
+    //         top: 0,
+    //         left: 0,
+    //         width: "100%",
+    //         height: "100%",
+    //         background: "rgba(0, 0, 0, 0.5)",
+    //         display: "flex",
+    //         alignItems: "center",
+    //         justifyContent: "center",
+    //         zIndex: 9999,
+    //     }}
+    // >
+    const customModalStyles: React.CSSProperties = {
+        position: 'fixed', // or 'fixed' depending on your needs
+        top: '35%', // Adjust as needed
+        left: '50%', // Adjust as needed
+        transform: 'translate(-50%, -50%)', // Center the modal
+        // width: 'auto', // Adjust width as needed
+        maxWidth: '800px', // Set a max width
     };
     return (
         <div className="h-screen overflow-hidden-scrollbar overflow-y-auto bg-bgColor">
@@ -56,7 +100,7 @@ const Token = () => {
 
                             <Stack direction="row" spacing={2}>
                                 <div className="flex w-full px-4  space-x-2 justify-center   gap-2">
-                                    <div className="justify-center flex flex-col items-center">
+                                    <div className="justify-center flex flex-col items-center" onClick={handleClickOpen}>
                                         <div className="border bg-green-500 w-12 h-12 items-center rounded-full p-2">
                                             <PaymentIcon />
                                         </div>
@@ -94,6 +138,62 @@ const Token = () => {
                     </div>
                 </div>
             </div>
+//////////////////////////////////////////////////////////////
+            <Dialog
+                open={open}
+                TransitionComponent={Transition}
+                keepMounted
+                onClose={handleClose}
+                PaperProps={{
+                    style: {
+                        ...customModalStyles
+                    },
+                }}
+            >
+                <DialogTitle className='flex justify-between items-center gap-3'>
+                    <p>Withdraw Funds</p>
+                    <IconButton>
+                        <HighlightOffIcon onClick={handleClose} />
+                    </IconButton>
+                </DialogTitle>
+
+                <DialogContent>
+                    <div className='max-w-full flex flex-col gap-4'>
+                        <div className='border rounded-md py-2'>
+                            <input type="text" className='w-full px-2' placeholder='Enter Token Address or pump link' />
+                        </div>
+                        <div className="px-2 flex border rounded-md items-center bg-cardBg gap-4 py-2 border-blue-600">
+                            <p className="text-center text-textWhiteColor">
+                                Submit your withdrawal request below. All requests are processed immediately. 100% of your balance will be withdrawn to your specified wallet minus the Solana transaction fee.
+                            </p>
+                        </div>
+                        <div className="px-2 flex border rounded-md items-center bg-cardBg gap-4 py-2 border-orange-600">
+                            <InfoIcon fontSize="small" color="warning" />
+                            <p className="text-center text-textWhiteColor">
+                                Main fee wallet will be used for one-time service fee
+                            </p>
+                        </div>
+                        <div className="px-2 flex border rounded-md items-center bg-cardBg gap-4 py-2 border-orange-600">
+                            <InfoIcon fontSize="small" color="warning" />
+                            <p className="text-center text-textWhiteColor">
+                                You cannot add the same token twice on the same account.
+                            </p>
+                        </div>
+                    </div>
+
+                    <Button
+                        style={{ textTransform: 'none' }}
+                        color="success"
+                        className="w-full"
+                        component="label"
+                        role={undefined}
+                        variant="contained"
+                    >
+                        <p className='  text-lg'>Add</p>
+                    </Button>
+                </DialogContent>
+            </Dialog>
+
         </div>
     );
 };
