@@ -9,7 +9,7 @@ import AddToken from "../Dialog/AddToken";
 
 const SideBar = () => {
     return (
-        <div className="sm:flex hidden  flex-col border-r-2 w-96 px-4 pt-4 text-textWhiteColor ">
+        <div className="md:flex hidden  flex-col border-r-2 w-96 px-4 pt-4 text-textWhiteColor ">
             <Credit />
 
             <div className="py-4 flex flex-col gap-4 ">

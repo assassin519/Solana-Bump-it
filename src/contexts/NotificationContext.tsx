@@ -10,7 +10,7 @@ const NotificationProvider = ({ children }:{children : React.ReactElement}) => {
     const showNotification = (msg: string, type: "success" | "error" | "info" | "warning") => {
         const toastOptions: ToastOptions = {
             position: type === "error" ? "bottom-right" : "top-right",
-            autoClose: 5000,
+            autoClose: 800,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -25,7 +25,7 @@ const NotificationProvider = ({ children }:{children : React.ReactElement}) => {
             {children}
             <ToastContainer
                 position="top-right"
-                autoClose={5000}
+                autoClose={800}
                 hideProgressBar={false}
                 newestOnTop
                 closeOnClick

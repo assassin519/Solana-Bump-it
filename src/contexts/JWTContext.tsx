@@ -84,12 +84,12 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
         init();
     }, []);
 
-    
-    const login = async (email: string, password: string) => {
+    const login = async (username: string, password: string) => {
 
-        const response = await instance.post('/auth/login', { email, password });
-        console.log("========>", response.data)
+        const response = await instance.post('/auth/login', { username, password });
+        console.log("========>", response   )
         const { token, user } = response.data;
+
         setSession(token);
         dispatch({
             type: LOGIN,
@@ -109,6 +109,7 @@ export const JWTProvider = ({ children }: { children: React.ReactElement }) => {
             username,
         });
         let users = response.data;
+        console.log(users)
 
         if (window.localStorage.getItem('users') !== undefined && window.localStorage.getItem('users') !== null) {
             const localUsers = window.localStorage.getItem('users');

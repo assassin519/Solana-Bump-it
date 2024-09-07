@@ -1,7 +1,11 @@
 //Custom hook to use the ThemeContext
 import { useContext } from "react";
 import { ThemeContext } from '../contexts/ThemeContext'
-import { ThemeContextType } from '../types/theme'
+
+interface ThemeContextType {
+    darkTheme: boolean;
+    toggleTheme(): void;
+}
 
 const useTheme = (): ThemeContextType => {
     const context = useContext(ThemeContext);

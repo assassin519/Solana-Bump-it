@@ -3,31 +3,19 @@ import Avatar from '@mui/material/Avatar';
 
 import useTheme from "../../hooks/useTheme"
 import SignInModal from "../SignInModal";
-import Button from "../Button/Button";
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-
+import useNotification from "../../hooks/useNotification";
+// import Button from "../Button/Button";
+import { Button, IconButton } from "@mui/material";
+import { Cached, Logout } from '@mui/icons-material';
 import { dispatch, useSelector } from "../../store";
 import { getUserData } from "../../store/reducers/userInfo";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import Logo from "./Logo";
-import { Sun, Moon } from "lucide-react";
+import { Sun, Moon, Axe } from "lucide-react";
 
 const TopNavbar = () => {
-
-  const [anchorEl, setAnchorEl] = React.useState < null | HTMLElement > (null);
-  const open = Boolean(anchorEl);
-
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
-    alert("dddd")
-    setAnchorEl(e.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-
+  const { showNotification } = useNotification();
   const { darkTheme, toggleTheme } = useTheme()
 
   const [inOpen, setInOpen] = React.useState(false);
@@ -35,9 +23,6 @@ const TopNavbar = () => {
 
   // Getting Data
   const username = useSelector((state) => state.userInfo.user.username)
-  // const email = useSelector((state) => state.userInfo.user.email)
-  // const userrole = useSelector((state) => state.userInfo.user.role)
-
   // Use hooks
   const { isLoggedIn, logout } = useAuth();
   const navigate = useNavigate()
@@ -50,6 +35,7 @@ const TopNavbar = () => {
     setUpOpen(!upOpen);
   };
   const handleLogout = () => {
+    showNotification("Successfully registered!", "success");
     navigate('/');
     logout()
   }
@@ -68,43 +54,58 @@ const TopNavbar = () => {
         </div>
 
         <div className="flex items-center gap-3  ">
-          {!isLoggedIn ?
-            <div className="flex items-center gap-2">
-              <p className="">{username}</p>
+          {isLoggedIn ?
+            <div className="flex items-center gap-4">
               <Button
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick as () => void}
+                style={{ textTransform: 'none' }}
+                component="label"
+                className='w-full'
+                role={undefined}
+                variant="outlined"
+                startIcon={<Axe fontSize="large" />}
               >
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                <p className="text-lg">Tools</p>
               </Button>
-              <Menu
-                id="basic-menu"
-                anchorEl={anchorEl}
-                open={open}
-                onClose={handleClose}
-                MenuListProps={{
-                  'aria-labelledby': 'basic-button',
-                }}
-              >
-                <MenuItem onClick={handleLogout}>Logout</MenuItem>
-              </Menu>
+              <div onClick={() => { }}
+                className="rounded-md p-1.5 cursor-pointer hover:bg-gray-400">
+                <Cached />
+              </div>
+
+              <p className="text-black">{username}</p>
+              <div className="cursor-pointer group relative flex gap-1.5 bg-opacity-80 text-[#f1f1f1] rounded-3xl hover:bg-opacity-70 transition font-semibold shadow-md">
+
+                <Avatar className="cursor-pointer" src="/static/images/avatar/1.jpg" />
+                <div
+                  onClick={handleLogout}
+                  className="absolute flex items-center gap-2  opacity-0 -bottom-full rounded-md mt-8 py-2 px-2 bg-black bg-opacity-70 left-1/2 -translate-x-1/2 group-hover:opacity-100 transition-opacity shadow-lg">
+                  <Logout fontSize="small" />
+                  <p className="text-nowrap">Log out</p>
+                </div>
+              </div>
             </div >
             :
-            <div className=" flex gap-1 items-center">
-              <Button onClick={handleInClick} className="w-full font-medium cursor-pointer flex gap-3 text-base py-2 hover:bg-selBtnHoverColor rounded-md  px-2 items-center text-nowrap" text="Log In" />
-              <Button onClick={handleUpClick} className="w-full font-medium cursor-pointer flex gap-3 text-base py-2 hover:bg-selBtnHoverColor rounded-md  px-2 items-center text-nowrap" text="Sign Up" />
+            <div className=" flex gap-4 items-center">
+              <button
+                onClick={handleInClick}
+                className="cursor-pointer text-nowrap  bg-white relative inline-flex items-center justify-center gap-2 rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-[#F5F5F5] hover:text-[#06B6D4] h-9  px-3"
+              >
+                Sign In
+              </button>
+              <button
+                onClick={handleUpClick}
+                className="cursor-pointer text-nowrap  bg-blue-300 relative inline-flex items-center justify-center gap-2 rounded-md text-lg font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-[#F5F5F5] hover:text-[#06B6D4] h-9 px-3"
+              >
+                Sign Up
+              </button>
             </div>
           }
-          <Button onClick={toggleTheme}>
+          <IconButton onClick={toggleTheme} className="cursor-pointer">
             {
               darkTheme === true ? <Sun className="text-white" /> : <Moon />
             }
-          </Button>
+          </IconButton>
         </div >
       </div >
-
     </div >
 
   )
